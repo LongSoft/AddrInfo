@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
 
     if(argc < 3)
     {
-        printf("AddrInfo v0.1\nThis program finds addresses of different BIOS structures of ASUS BIOS files and stores them to INI-formated file\n\n"
+        printf("AddrInfo v0.2\nThis program finds addresses of different BIOS structures of ASUS BIOS files and stores them to INI-formated file\n\n"
             "Usage: AddrInfo BIOSFILE INIFILE\n\n");
         return ERR_ARGS;
     }
@@ -162,12 +162,12 @@ int main(int argc, char* argv[])
     rest = freespace - asusbkp;
     s2lp = memmem(asusbkp, rest, ASUSBKP_S2LP_HEADER, sizeof(ASUSBKP_S2LP_HEADER));
     if(s2lp)
-        asusbkp_s2lp_address = buffer - s2lp;
+        asusbkp_s2lp_address = s2lp - buffer;
 
     /* Searching for KEYS in ASUSBKP */
     keys = memmem(asusbkp, rest, ASUSBKP_KEYS_HEADER, sizeof(ASUSBKP_KEYS_HEADER));
     if(keys)
-        asusbkp_keys_address = buffer - keys;
+        asusbkp_keys_address = keys - buffer;
 
     /* Searching for ME firmware address*/
     me = memmem(buffer, filesize, ME_HEADER, sizeof(ME_HEADER));
