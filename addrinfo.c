@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
 
     if(argc < 3)
     {
-        printf("AddrInfo v0.2\nThis program finds addresses of different BIOS structures of ASUS BIOS files and stores them to INI-formated file\n\n"
+        printf("AddrInfo v0.2.1\nThis program finds addresses of different BIOS structures of ASUS BIOS files and stores them to INI-formated file\n\n"
             "Usage: AddrInfo BIOSFILE INIFILE\n\n");
         return ERR_ARGS;
     }
